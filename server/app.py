@@ -20,6 +20,14 @@ migrate = Migrate(app, db)
 # initialize the Flask application to use the database
 db.init_app(app)
 
+# define a model class by inheriting from db.Model.
+class Pet(db.Model):
+    __tablename__ = 'pets'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    species = db.Column(db.String)
+
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
